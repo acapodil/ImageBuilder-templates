@@ -3,12 +3,12 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "imageTemplateName": {
+      "defaultValue": "goldenImage",
       "type": "string"
     },
-    "api-version": {
-      "type": "string"
-    },
-    "svclocation": {
+    
+    "location": {
+      "defaultValue": "eastus",
       "type": "string"
     }
   },
@@ -17,8 +17,8 @@
     {
       "name": "[parameters('imageTemplateName')]",
       "type": "Microsoft.VirtualMachineImages/imageTemplates",
-      "apiVersion": "[parameters('api-version')]",
-      "location": "[parameters('svclocation')]",
+      "apiVersion": "2019-05-01-preview",
+      "location": "[parameters('location')]",
       "dependsOn": [],
       "tags": {
         "imagebuilderTemplate": "win10multi",
@@ -31,7 +31,7 @@
         }
       },
       "properties": {
-        "buildTimeoutInMinutes": 30,
+        "buildTimeoutInMinutes": 60,
         "vmProfile": {
           "vmSize": "Standard_D2_v2",
           "osDiskSizeGB": 127
@@ -47,8 +47,8 @@
           {
             "type": "PowerShell",
             "runElevated": true,
-            "name": "GetAzCopy",
-            "scripturi": ""
+            "name": "customizeImage",
+            "scripturi": "https://raw.githubusercontent.com/acapodil/ImageBuilder-templates/main/Image%20Builder%20Scripts/imageBuilderCustomScript.ps1"
           }
         ],
         "distribute": [
@@ -67,3 +67,9 @@
     }
   ]
 }
+
+
+
+
+
+
