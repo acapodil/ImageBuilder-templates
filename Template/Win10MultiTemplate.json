@@ -49,6 +49,13 @@
             "runElevated": true,
             "name": "customizeImage",
             "scripturi": "https://raw.githubusercontent.com/acapodil/ImageBuilder-templates/main/Image%20Builder%20Scripts/imageBuilderCustomScript.ps1"
+          },
+           {
+            "type": "PowerShell",
+            "runElevated": true,
+            "name": "customizeImage",
+            "inline":[ 
+            ]
           }
         ],
         "distribute": [
